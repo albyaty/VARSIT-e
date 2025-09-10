@@ -1,0 +1,19 @@
+title: VARSIT-e
+description: Surgical video library
+theme: minima
+
+# Top nav
+header_pages: [about.md, library/index.md, events/index.md, education/index.md, research/index.md]
+
+# Collections
+collections:
+  videos:
+    output: true
+    permalink: /library/:name/
+  posts:  # enable only if you want blog-style updates
+    output: true
+
+# Useful built-in plugins supported by GitHub Pages
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
