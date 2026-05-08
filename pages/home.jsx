@@ -14,7 +14,7 @@ function HomePage({ setPage, setSelectedVideo }) {
         <div className="container-wide" style={{ position: "relative", zIndex: 2 }}>
           <div style={{ display: "grid", gridTemplateColumns: "1.15fr 1fr", gap: 80, alignItems: "center" }}>
             <div className="fade-up">
-              <span className="eyebrow">Academic Surgical Education · Open Access</span>
+              <span className="eyebrow">Academic Surgical Education | Open Access</span>
               <h1 style={{ marginTop: 24 }}>
                 Expert surgical<br />video education,<br />
                 <span style={{ color: "var(--accent)", fontFamily: "\"Space Grotesk\"" }}>frame by frame.</span>
@@ -76,7 +76,7 @@ function HomePage({ setPage, setSelectedVideo }) {
           <span className="eyebrow" style={{ alignSelf: "start" }}>Our mission</span>
           <div>
             <h2 style={{ fontSize: 40, lineHeight: 1.15 }}>
-              We believe surgical mastery should be <span style={{ color: "var(--accent)" }}>open, peer-reviewed, and visible</span> — not hidden inside private archives.
+              We believe surgical mastery should be <span style={{ color: "var(--accent)" }}>open, peer-reviewed, and visible</span> - not hidden inside private archives.
             </h2>
             <p className="lead" style={{ marginTop: 28, maxWidth: 760 }}>
               VARSIT-E is built by academic faculty to publish, peer-review, and discuss surgical video as a first-class scholarly artifact. Every contribution is reviewed for technical accuracy, educational value, and de-identification before publication.
@@ -96,7 +96,7 @@ function HomePage({ setPage, setSelectedVideo }) {
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
             {[
-            { tag: "01", t: "Events", d: "Live faculty surgery streams, hands-on workshops, and annual VARSIT-E symposium.", soon: "Q3 2026" },
+            { tag: "01", t: "Events", d: "Faculty case conferences, hands-on workshops, and the annual VARSIT-E symposium.", soon: "Q3 2026" },
             { tag: "02", t: "Education", d: "Structured curricula, case-of-the-week, board prep modules and resident pathways.", soon: "Q4 2026" },
             { tag: "03", t: "Research & Innovation", d: "Multi-institutional collaborative protocols, AR/AI surgical-vision research and publishing.", soon: "2027" }].
             map((p) =>
@@ -166,61 +166,55 @@ function HeroBackdrop() {
 
 function HeroVisual() {
   return (
-    <div style={{ position: "relative", aspectRatio: "1 / 1", maxWidth: 560, marginLeft: "auto" }} className="fade-up">
-      {/* Layered surgical video preview */}
-      <div className="card" style={{
-        position: "absolute", inset: "8% 0 0 8%", width: "92%", height: "70%",
+    <div style={{ position: "relative", aspectRatio: "4 / 5", width: "100%", maxWidth: 560, marginLeft: "auto" }} className="fade-up">
+      <div style={{
+        position: "absolute", inset: 0,
         borderRadius: 18, overflow: "hidden",
-        background: "radial-gradient(circle at 30% 30%, #2d5bff 0%, #0a1130 60%, #07080c 100%)",
+        border: "1px solid var(--border)",
+        background: "radial-gradient(circle at 30% 30%, #2d5bff 0%, #0a1130 55%, #050610 100%)",
         boxShadow: "var(--shadow-strong)"
       }}>
-        <svg style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }} viewBox="0 0 400 280" preserveAspectRatio="none">
+        <svg style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }} viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <radialGradient id="hero-visual-glow" cx="0.5" cy="0.45" r="0.55">
+              <stop offset="0%" stopColor="rgba(45,91,255,0.55)"/>
+              <stop offset="100%" stopColor="rgba(45,91,255,0)"/>
+            </radialGradient>
+          </defs>
+          <rect width="400" height="500" fill="url(#hero-visual-glow)"/>
           <g fill="none" stroke="rgba(255,255,255,0.22)" strokeWidth="1">
-            <circle cx="200" cy="140" r="80" /><circle cx="200" cy="140" r="55" /><circle cx="200" cy="140" r="30" />
-            <line x1="200" y1="40" x2="200" y2="240" strokeDasharray="2 6" />
-            <line x1="100" y1="140" x2="300" y2="140" strokeDasharray="2 6" />
+            <circle cx="200" cy="225" r="120"/>
+            <circle cx="200" cy="225" r="85"/>
+            <circle cx="200" cy="225" r="50"/>
+            <line x1="200" y1="80" x2="200" y2="370" strokeDasharray="2 6"/>
+            <line x1="60" y1="225" x2="340" y2="225" strokeDasharray="2 6"/>
           </g>
-          <circle cx="200" cy="140" r="4" fill="white" />
-          <text x="20" y="30" fill="rgba(255,255,255,0.65)" fontFamily="JetBrains Mono, monospace" fontSize="10" letterSpacing="2">CH 03 · TARGETING</text>
-          <text x="20" y="260" fill="rgba(255,255,255,0.65)" fontFamily="JetBrains Mono, monospace" fontSize="10" letterSpacing="2">REC 00:14:32 · 4K</text>
-          <g fill="rgba(255,255,255,0.4)">
-            <rect x="350" y="20" width="3" height="14" /><rect x="356" y="14" width="3" height="20" />
-            <rect x="362" y="22" width="3" height="12" /><rect x="368" y="10" width="3" height="24" />
-          </g>
+          <circle cx="200" cy="225" r="4" fill="white"/>
+          <text x="24" y="36" fill="rgba(255,255,255,0.7)" fontFamily="JetBrains Mono, monospace" fontSize="11" letterSpacing="2">CH 03 - STEP 04 OF 12</text>
+          <text x="24" y="476" fill="rgba(255,255,255,0.7)" fontFamily="JetBrains Mono, monospace" fontSize="11" letterSpacing="2">00:14:32 - 4K - NARRATED</text>
+          <text x="376" y="36" textAnchor="end" fill="rgba(255,255,255,0.7)" fontFamily="JetBrains Mono, monospace" fontSize="11" letterSpacing="2">SP ROBOTIC</text>
         </svg>
-        {/* play button */}
         <div style={{
-          position: "absolute", left: "50%", top: "50%", transform: "translate(-50%, -50%)",
-          width: 76, height: 76, borderRadius: "50%", background: "var(--accent)",
+          position: "absolute", left: "50%", top: "45%", transform: "translate(-50%, -50%)",
+          width: 84, height: 84, borderRadius: "50%", background: "var(--accent)",
           display: "flex", alignItems: "center", justifyContent: "center",
-          boxShadow: "0 12px 40px var(--accent-glow)"
+          boxShadow: "0 16px 48px var(--accent-glow)"
         }}>
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M6 4l14 8-14 8z" /></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M6 4l14 8-14 8z"/></svg>
         </div>
-      </div>
-      {/* Floating chip top-right */}
-      <div className="card" style={{
-        position: "absolute", top: 0, right: 0, padding: "12px 14px",
-        background: "var(--surface)", display: "flex", alignItems: "center", gap: 10,
-        boxShadow: "var(--shadow)"
-      }}>
-        <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#22c55e" }} className="live-dot" />
-        <div>
-          <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--text-3)", letterSpacing: "0.1em" }}>NOW STREAMING</div>
-          <div style={{ fontSize: 13, fontWeight: 600 }}>Faculty roundtable · 412 watching</div>
-        </div>
-      </div>
-      {/* Floating chip bottom-left */}
-      <div className="card" style={{
-        position: "absolute", bottom: 0, left: 0, padding: "14px 16px",
-        background: "var(--surface)", boxShadow: "var(--shadow)", minWidth: 220
-      }}>
-        <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--text-3)", letterSpacing: "0.1em", marginBottom: 8 }}>CASE METADATA</div>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px 16px", fontSize: 12 }}>
-          <div><div style={{ color: "var(--text-3)" }}>Procedure</div><div style={{ fontWeight: 600 }}>Partial Nx</div></div>
-          <div><div style={{ color: "var(--text-3)" }}>Approach</div><div style={{ fontWeight: 600 }}>SP Robotic</div></div>
-          <div><div style={{ color: "var(--text-3)" }}>WIT</div><div style={{ fontWeight: 600 }}>18 min</div></div>
-          <div><div style={{ color: "var(--text-3)" }}>Difficulty</div><div style={{ fontWeight: 600, color: "var(--accent)" }}>Advanced</div></div>
+        <div style={{
+          position: "absolute", left: 16, right: 16, bottom: 16,
+          padding: "14px 16px", borderRadius: 12,
+          background: "rgba(7,8,12,0.55)", backdropFilter: "blur(14px)",
+          border: "1px solid rgba(255,255,255,0.12)"
+        }}>
+          <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "rgba(255,255,255,0.6)", letterSpacing: "0.14em", marginBottom: 8 }}>CASE METADATA</div>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 12, fontSize: 12, color: "white" }}>
+            <div><div style={{ color: "rgba(255,255,255,0.55)" }}>Procedure</div><div style={{ fontWeight: 600 }}>Partial Nx</div></div>
+            <div><div style={{ color: "rgba(255,255,255,0.55)" }}>Approach</div><div style={{ fontWeight: 600 }}>SP Robotic</div></div>
+            <div><div style={{ color: "rgba(255,255,255,0.55)" }}>WIT</div><div style={{ fontWeight: 600 }}>18 min</div></div>
+            <div><div style={{ color: "rgba(255,255,255,0.55)" }}>Level</div><div style={{ fontWeight: 600, color: "#7aa0ff" }}>Advanced</div></div>
+          </div>
         </div>
       </div>
     </div>);

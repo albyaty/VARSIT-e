@@ -1,4 +1,4 @@
-// Shared UI components — registered to window for cross-script use
+// Shared UI components - registered to window for cross-script use
 const { useState, useEffect, useRef, useMemo } = React;
 
 // ===== Icons =====
@@ -59,8 +59,8 @@ function Nav({ page, setPage }) {
         <div className="nav-actions">
           <div className="nav-search" onClick={() => setPage("library")}>
             <Icon.search />
-            <span>Search videos, surgeons…</span>
-            <kbd>⌘K</kbd>
+            <span>Search videos, surgeons...</span>
+            <kbd>Ctrl+K</kbd>
           </div>
           <button className="btn btn-icon btn-secondary" onClick={() => setTheme(theme === "dark" ? "light" : "dark")} title="Toggle theme">
             {theme === "dark" ? <Icon.sun /> : <Icon.moon />}
@@ -85,7 +85,7 @@ function Footer({ setPage }) {
               An academic surgical video education platform built by surgeons, for surgeons. Open access. Peer-curated.
             </p>
             <div style={{ marginTop: 20, display: "flex", gap: 8, alignItems: "center" }}>
-              <span className="pill"><span className="pill-dot live-dot"/>312 videos · 27 institutions</span>
+              <span className="pill"><span className="pill-dot live-dot"/>312 videos | 27 institutions</span>
             </div>
           </div>
           <div>
@@ -118,8 +118,8 @@ function Footer({ setPage }) {
           </div>
         </div>
         <div className="footer-bottom">
-          <span>© 2026 VARSIT-E · Expert Surgical Video Education</span>
-          <span className="text-mono" style={{ fontSize: 11, letterSpacing: "0.1em" }}>v 1.0 · ACADEMIC PREVIEW</span>
+          <span>(c) 2026 VARSIT-E | Expert Surgical Video Education</span>
+          <span className="text-mono" style={{ fontSize: 11, letterSpacing: "0.1em" }}>v 1.0 | ACADEMIC PREVIEW</span>
         </div>
       </div>
     </footer>
@@ -141,7 +141,7 @@ function VideoCard({ v, onOpen }) {
         <div className="vcard-title">{v.title}</div>
         <div className="vcard-meta" style={{ marginTop: 6 }}>
           <strong>{v.surgeon.split(",")[0]}</strong>
-          <span>·</span>
+          <span>|</span>
           <span>{v.institution}</span>
         </div>
         <div className="vcard-tags">
@@ -164,7 +164,7 @@ function ThumbDecor({ seed }) {
         </g>
         <circle cx="220" cy="90" r="36" fill="none" stroke="rgba(255,255,255,0.5)" strokeWidth="1" strokeDasharray="2 4"/>
         <circle cx="220" cy="90" r="6" fill="rgba(255,255,255,0.85)"/>
-        <text x="20" y="160" fill="rgba(255,255,255,0.5)" fontFamily="JetBrains Mono, monospace" fontSize="8" letterSpacing="2">PROC.001 · CH 04</text>
+        <text x="20" y="160" fill="rgba(255,255,255,0.5)" fontFamily="JetBrains Mono, monospace" fontSize="8" letterSpacing="2">PROC.001 | CH 04</text>
       </svg>
     );
   }
@@ -179,7 +179,7 @@ function ThumbDecor({ seed }) {
         <g fill="rgba(255,255,255,0.7)">
           <circle cx="80" cy="60" r="2"/><circle cx="160" cy="90" r="3"/><circle cx="240" cy="60" r="2"/>
         </g>
-        <text x="20" y="30" fill="rgba(255,255,255,0.55)" fontFamily="JetBrains Mono, monospace" fontSize="8" letterSpacing="2">SIG · LIVE</text>
+        <text x="20" y="30" fill="rgba(255,255,255,0.55)" fontFamily="JetBrains Mono, monospace" fontSize="8" letterSpacing="2">SIG | INDEXED</text>
       </svg>
     );
   }
@@ -202,7 +202,7 @@ function ThumbDecor({ seed }) {
         <line x1="160" y1="40" x2="160" y2="140" strokeDasharray="1 3"/>
         <line x1="110" y1="90" x2="210" y2="90" strokeDasharray="1 3"/>
       </g>
-      <text x="20" y="160" fill="rgba(255,255,255,0.5)" fontFamily="JetBrains Mono, monospace" fontSize="8" letterSpacing="2">TARGET · LOCKED</text>
+      <text x="20" y="160" fill="rgba(255,255,255,0.5)" fontFamily="JetBrains Mono, monospace" fontSize="8" letterSpacing="2">TARGET | LOCKED</text>
     </svg>
   );
 }
