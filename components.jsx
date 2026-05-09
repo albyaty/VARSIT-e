@@ -23,28 +23,25 @@ const Icon = {
 };
 
 // ===== Logo =====
-function Logo({ height = 28 }) {
-  const theme = window.__theme || "dark";
+function Logo({ height = 28, theme = "dark" }) {
   const src = theme === "light" ? "assets/wordmark-light.png" : "assets/wordmark-dark.png";
   return <img src={src} alt="VARSIT-E" style={{ height, width: "auto", display: "block" }} />;
 }
 
 // ===== Nav =====
-function Nav({ page, setPage }) {
+function Nav({ page, setPage, theme = "dark", setTheme }) {
   const links = [
     { id: "home", label: "Home" },
     { id: "library", label: "Video Library" },
     { id: "about", label: "About" },
     { id: "submit", label: "Submit" },
   ];
-  const theme = window.__theme || "dark";
-  const setTheme = window.__setTheme || (() => {});
   return (
     <header className="nav">
       <div className="container-wide nav-inner">
         <div className="flex items-center gap-24">
           <a className="nav-logo" onClick={() => setPage("home")} style={{ cursor: "pointer" }}>
-            <Logo height={26} />
+            <Logo height={26} theme={theme} />
           </a>
           <nav className="nav-links">
             {links.map(l => (
@@ -62,7 +59,7 @@ function Nav({ page, setPage }) {
             <span>Search videos, surgeons...</span>
             <kbd>Ctrl+K</kbd>
           </div>
-          <button className="btn btn-icon btn-secondary" onClick={() => setTheme(theme === "dark" ? "light" : "dark")} title="Toggle theme">
+          <button className="btn btn-icon btn-secondary" onClick={() => setTheme((t) => t === "dark" ? "light" : "dark")} title="Toggle theme">
             {theme === "dark" ? <Icon.sun /> : <Icon.moon />}
           </button>
           <button className="btn btn-secondary" style={{ display: "inline-flex" }}>Sign in</button>
@@ -74,13 +71,13 @@ function Nav({ page, setPage }) {
 }
 
 // ===== Footer =====
-function Footer({ setPage }) {
+function Footer({ setPage, theme = "dark" }) {
   return (
     <footer className="footer">
       <div className="container-wide">
         <div className="footer-grid">
           <div>
-            <Logo height={26} />
+            <Logo height={26} theme={theme} />
             <p style={{ marginTop: 16, maxWidth: 360, fontSize: 14 }}>
               An academic surgical video education platform built by surgeons, for surgeons. Open access. Peer-curated.
             </p>

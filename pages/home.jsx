@@ -1,6 +1,9 @@
 // Home page
 const { useState: useStateH } = React;
 
+const HERO_VIDEO_SRC = "assets/hero-teaser.mp4";
+const HERO_VIDEO_POSTER = "assets/hero-teaser-poster.jpg";
+
 function HomePage({ setPage, setSelectedVideo }) {
   const data = window.VARSITE_DATA;
   const featured = data.videos.slice(0, 6);
@@ -12,7 +15,7 @@ function HomePage({ setPage, setSelectedVideo }) {
       <section style={{ position: "relative", overflow: "hidden", paddingTop: 80, paddingBottom: 120 }}>
         <HeroBackdrop />
         <div className="container-wide" style={{ position: "relative", zIndex: 2 }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1.15fr 1fr", gap: 80, alignItems: "center" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1.1fr 1.02fr", gap: 72, alignItems: "center" }}>
             <div className="fade-up">
               <span className="eyebrow">Academic Surgical Education | Open Access</span>
               <h1 style={{ marginTop: 24 }}>
@@ -166,41 +169,46 @@ function HeroBackdrop() {
 
 function HeroVisual() {
   return (
-    <div style={{ position: "relative", aspectRatio: "4 / 5", width: "100%", maxWidth: 560, marginLeft: "auto" }} className="fade-up">
+    <div style={{ position: "relative", aspectRatio: "9 / 10", width: "100%", maxWidth: 620, marginLeft: "auto" }} className="fade-up">
       <div style={{
         position: "absolute", inset: 0,
         borderRadius: 18, overflow: "hidden",
         border: "1px solid var(--border)",
-        background: "radial-gradient(circle at 30% 30%, #2d5bff 0%, #0a1130 55%, #050610 100%)",
+        background: "#050610",
         boxShadow: "var(--shadow-strong)"
       }}>
-        <svg style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }} viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice">
-          <defs>
-            <radialGradient id="hero-visual-glow" cx="0.5" cy="0.45" r="0.55">
-              <stop offset="0%" stopColor="rgba(45,91,255,0.55)"/>
-              <stop offset="100%" stopColor="rgba(45,91,255,0)"/>
-            </radialGradient>
-          </defs>
-          <rect width="400" height="500" fill="url(#hero-visual-glow)"/>
-          <g fill="none" stroke="rgba(255,255,255,0.22)" strokeWidth="1">
-            <circle cx="200" cy="225" r="120"/>
-            <circle cx="200" cy="225" r="85"/>
-            <circle cx="200" cy="225" r="50"/>
-            <line x1="200" y1="80" x2="200" y2="370" strokeDasharray="2 6"/>
-            <line x1="60" y1="225" x2="340" y2="225" strokeDasharray="2 6"/>
-          </g>
-          <circle cx="200" cy="225" r="4" fill="white"/>
-          <text x="24" y="36" fill="rgba(255,255,255,0.7)" fontFamily="JetBrains Mono, monospace" fontSize="11" letterSpacing="2">CH 03 - STEP 04 OF 12</text>
-          <text x="24" y="476" fill="rgba(255,255,255,0.7)" fontFamily="JetBrains Mono, monospace" fontSize="11" letterSpacing="2">00:14:32 - 4K - NARRATED</text>
-          <text x="376" y="36" textAnchor="end" fill="rgba(255,255,255,0.7)" fontFamily="JetBrains Mono, monospace" fontSize="11" letterSpacing="2">SP ROBOTIC</text>
-        </svg>
+        <video
+          src={HERO_VIDEO_SRC}
+          poster={HERO_VIDEO_POSTER}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover"
+          }}
+        />
         <div style={{
-          position: "absolute", left: "50%", top: "45%", transform: "translate(-50%, -50%)",
-          width: 84, height: 84, borderRadius: "50%", background: "var(--accent)",
-          display: "flex", alignItems: "center", justifyContent: "center",
-          boxShadow: "0 16px 48px var(--accent-glow)"
+          position: "absolute", inset: 0,
+          background: "linear-gradient(180deg, rgba(5,6,16,0.18) 0%, rgba(5,6,16,0.04) 22%, rgba(5,6,16,0.12) 56%, rgba(5,6,16,0.72) 100%)"
+        }} />
+        <div style={{
+          position: "absolute", inset: 0,
+          background: "radial-gradient(circle at 38% 28%, rgba(45,91,255,0.22) 0%, rgba(45,91,255,0) 48%)"
+        }} />
+        <div style={{
+          position: "absolute", top: 18, left: 18, right: 18,
+          display: "flex", justifyContent: "space-between", alignItems: "center",
+          gap: 12, color: "rgba(255,255,255,0.78)",
+          fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase"
         }}>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M6 4l14 8-14 8z"/></svg>
+          <span>Featured Procedure</span>
+          <span>Autoplay Preview</span>
         </div>
         <div style={{
           position: "absolute", left: 16, right: 16, bottom: 16,
@@ -209,10 +217,9 @@ function HeroVisual() {
           border: "1px solid rgba(255,255,255,0.12)"
         }}>
           <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "rgba(255,255,255,0.6)", letterSpacing: "0.14em", marginBottom: 8 }}>CASE METADATA</div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 12, fontSize: 12, color: "white" }}>
-            <div><div style={{ color: "rgba(255,255,255,0.55)" }}>Procedure</div><div style={{ fontWeight: 600 }}>Partial Nx</div></div>
-            <div><div style={{ color: "rgba(255,255,255,0.55)" }}>Approach</div><div style={{ fontWeight: 600 }}>SP Robotic</div></div>
-            <div><div style={{ color: "rgba(255,255,255,0.55)" }}>WIT</div><div style={{ fontWeight: 600 }}>18 min</div></div>
+          <div style={{ display: "grid", gridTemplateColumns: "1.5fr 1.65fr 0.85fr", gap: 12, fontSize: 12, color: "white" }}>
+            <div><div style={{ color: "rgba(255,255,255,0.55)" }}>Procedure</div><div style={{ fontWeight: 600 }}>Radical Prostatectomy</div></div>
+            <div><div style={{ color: "rgba(255,255,255,0.55)" }}>Approach</div><div style={{ fontWeight: 600 }}>Single Port Transvesical</div></div>
             <div><div style={{ color: "rgba(255,255,255,0.55)" }}>Level</div><div style={{ fontWeight: 600, color: "#7aa0ff" }}>Advanced</div></div>
           </div>
         </div>

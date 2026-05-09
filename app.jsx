@@ -7,8 +7,6 @@ function App() {
 
   React.useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
-    window.__theme = theme;
-    window.__setTheme = setTheme;
 
     const root = document.documentElement;
     root.style.setProperty("--accent", accent);
@@ -27,13 +25,13 @@ function App() {
 
   return (
     <div className="shell">
-      <Nav page={page} setPage={setPage}/>
+      <Nav page={page} setPage={setPage} theme={theme} setTheme={setTheme}/>
       {page === "home" && <HomePage setPage={setPage} setSelectedVideo={setSelectedVideo}/>}
       {page === "library" && <LibraryPage setPage={setPage} setSelectedVideo={setSelectedVideo}/>}
       {page === "detail" && <DetailPage video={selectedVideo} setPage={setPage} setSelectedVideo={setSelectedVideo}/>}
       {page === "about" && <AboutPage setPage={setPage}/>}
       {page === "submit" && <SubmitPage setPage={setPage}/>}
-      <Footer setPage={setPage}/>
+      <Footer setPage={setPage} theme={theme}/>
     </div>
   );
 }
