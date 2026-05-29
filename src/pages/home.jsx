@@ -3,6 +3,9 @@ import React from "react";
 import { DATA } from "../data.js";
 import { Icon, VideoCard } from "../components.jsx";
 
+const HERO_VIDEO_SRC = import.meta.env.BASE_URL + "assets/hero-teaser.mp4";
+const HERO_VIDEO_POSTER = import.meta.env.BASE_URL + "assets/hero-teaser-poster.jpg";
+
 export default function HomePage({ setPage, openVideo }) {
   const data = DATA;
   const featured = data.videos.slice(0, 6);
@@ -167,57 +170,53 @@ function HeroBackdrop() {
 
 function HeroVisual() {
   return (
-    <div style={{ position: "relative", aspectRatio: "1 / 1", maxWidth: 560, width: "100%", marginLeft: "auto" }} className="fade-up">
-      <div className="card" style={{
-        position: "absolute", inset: "8% 0 0 8%", width: "92%", height: "70%",
+    <div style={{ position: "relative", aspectRatio: "9 / 10", width: "100%", maxWidth: 620, marginLeft: "auto" }} className="fade-up">
+      <div style={{
+        position: "absolute", inset: 0,
         borderRadius: 18, overflow: "hidden",
-        background: "radial-gradient(circle at 30% 30%, #2d5bff 0%, #0a1130 60%, #07080c 100%)",
+        border: "1px solid var(--border)",
+        background: "#050610",
         boxShadow: "var(--shadow-strong)"
       }}>
-        <svg style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }} viewBox="0 0 400 280" preserveAspectRatio="none">
-          <g fill="none" stroke="rgba(255,255,255,0.22)" strokeWidth="1">
-            <circle cx="200" cy="140" r="80" /><circle cx="200" cy="140" r="55" /><circle cx="200" cy="140" r="30" />
-            <line x1="200" y1="40" x2="200" y2="240" strokeDasharray="2 6" />
-            <line x1="100" y1="140" x2="300" y2="140" strokeDasharray="2 6" />
-          </g>
-          <circle cx="200" cy="140" r="4" fill="white" />
-          <text x="20" y="30" fill="rgba(255,255,255,0.65)" fontFamily="JetBrains Mono, monospace" fontSize="10" letterSpacing="2">CH 03 · TARGETING</text>
-          <text x="20" y="260" fill="rgba(255,255,255,0.65)" fontFamily="JetBrains Mono, monospace" fontSize="10" letterSpacing="2">REC 00:14:32 · 4K</text>
-          <g fill="rgba(255,255,255,0.4)">
-            <rect x="350" y="20" width="3" height="14" /><rect x="356" y="14" width="3" height="20" />
-            <rect x="362" y="22" width="3" height="12" /><rect x="368" y="10" width="3" height="24" />
-          </g>
-        </svg>
+        <video
+          src={HERO_VIDEO_SRC}
+          poster={HERO_VIDEO_POSTER}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
+        />
         <div style={{
-          position: "absolute", left: "50%", top: "50%", transform: "translate(-50%, -50%)",
-          width: 76, height: 76, borderRadius: "50%", background: "var(--accent)",
-          display: "flex", alignItems: "center", justifyContent: "center",
-          boxShadow: "0 12px 40px var(--accent-glow)"
+          position: "absolute", inset: 0,
+          background: "linear-gradient(180deg, rgba(5,6,16,0.18) 0%, rgba(5,6,16,0.04) 22%, rgba(5,6,16,0.12) 56%, rgba(5,6,16,0.72) 100%)"
+        }} />
+        <div style={{
+          position: "absolute", inset: 0,
+          background: "radial-gradient(circle at 38% 28%, rgba(45,91,255,0.22) 0%, rgba(45,91,255,0) 48%)"
+        }} />
+        <div style={{
+          position: "absolute", top: 18, left: 18, right: 18,
+          display: "flex", justifyContent: "space-between", alignItems: "center",
+          gap: 12, color: "rgba(255,255,255,0.78)",
+          fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase"
         }}>
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M6 4l14 8-14 8z" /></svg>
+          <span>Featured Procedure</span>
+          <span>Autoplay Preview</span>
         </div>
-      </div>
-      <div className="card" style={{
-        position: "absolute", top: 0, right: 0, padding: "12px 14px",
-        background: "var(--surface)", display: "flex", alignItems: "center", gap: 10,
-        boxShadow: "var(--shadow)"
-      }}>
-        <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#22c55e" }} className="live-dot" />
-        <div>
-          <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--text-3)", letterSpacing: "0.1em" }}>NOW STREAMING</div>
-          <div style={{ fontSize: 13, fontWeight: 600 }}>Faculty roundtable · 412 watching</div>
-        </div>
-      </div>
-      <div className="card" style={{
-        position: "absolute", bottom: 0, left: 0, padding: "14px 16px",
-        background: "var(--surface)", boxShadow: "var(--shadow)", minWidth: 220
-      }}>
-        <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--text-3)", letterSpacing: "0.1em", marginBottom: 8 }}>CASE METADATA</div>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px 16px", fontSize: 12 }}>
-          <div><div style={{ color: "var(--text-3)" }}>Procedure</div><div style={{ fontWeight: 600 }}>Partial Nx</div></div>
-          <div><div style={{ color: "var(--text-3)" }}>Approach</div><div style={{ fontWeight: 600 }}>SP Robotic</div></div>
-          <div><div style={{ color: "var(--text-3)" }}>WIT</div><div style={{ fontWeight: 600 }}>18 min</div></div>
-          <div><div style={{ color: "var(--text-3)" }}>Difficulty</div><div style={{ fontWeight: 600, color: "var(--accent)" }}>Advanced</div></div>
+        <div style={{
+          position: "absolute", left: 16, right: 16, bottom: 16,
+          padding: "14px 16px", borderRadius: 12,
+          background: "rgba(7,8,12,0.55)", backdropFilter: "blur(14px)",
+          border: "1px solid rgba(255,255,255,0.12)"
+        }}>
+          <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "rgba(255,255,255,0.6)", letterSpacing: "0.14em", marginBottom: 8 }}>CASE METADATA</div>
+          <div style={{ display: "grid", gridTemplateColumns: "1.5fr 1.65fr 0.85fr", gap: 12, fontSize: 12, color: "white" }}>
+            <div><div style={{ color: "rgba(255,255,255,0.55)" }}>Procedure</div><div style={{ fontWeight: 600 }}>Radical Prostatectomy</div></div>
+            <div><div style={{ color: "rgba(255,255,255,0.55)" }}>Approach</div><div style={{ fontWeight: 600 }}>Single Port Transvesical</div></div>
+            <div><div style={{ color: "rgba(255,255,255,0.55)" }}>Level</div><div style={{ fontWeight: 600, color: "#7aa0ff" }}>Advanced</div></div>
+          </div>
         </div>
       </div>
     </div>
